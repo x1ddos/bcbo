@@ -1,0 +1,83 @@
+body {
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+}
+
+.ui.transparent.menu {
+  opacity: 0.95;
+}
+
+.container {
+  margin: 0px auto;
+}
+
+body > .container {
+  padding-top: 40px;
+}
+
+.ui.grid > .column[role=navigation] {
+  margin-top: 1.5rem;
+}
+
+@media only screen and (min-width : 1300px) {
+  .container {
+    margin-left: 150px;
+    margin-right: 150px;
+  }
+}
+
+@media only screen and (min-width : 1700px) {
+  .container {
+    margin-left: 300px;
+    margin-right: 300px;
+  }
+}
+
+
+a, a:visited {
+  color: #009FDA;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #00BAFF;
+}
+
+.truncate {
+  width: 50%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ui.list .item > .content > h3 {
+  margin-top: 0;
+}
+
+.ui.list .item > .content h4 {
+  margin-top: 1em;
+  margin-bottom: 0;
+}
+
+.ui.flex.list .item {
+  display: flex;
+  align-items: flex-start;
+}
+
+.ui.flex.list .item > .content {
+  flex: 1;
+}
+
+.ui.selectable.list .item {
+  cursor: pointer;
+}
+
+.ui.selectable.list .item:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.many.labels > .ui.label {
+  margin: 0.25em;
+}

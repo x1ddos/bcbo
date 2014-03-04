@@ -1,0 +1,64 @@
+<h2 class="ui dividing green header">
+  Users list
+</h2>
+
+<i class="big loading icon" ng-show="!users.$done"></i>
+
+<div class="ui relaxed divided selectable flex list">
+  <div ng-repeat="user in users | orderBy:'name'" class="item"
+       ng-click="toggleExpand(user)">
+    <img class="ui avatar image" ng-src="{{user.photo}}">
+    <div class="content">
+      <h3 class="header">
+        {{user.name}}
+        <a ng-href="{{s.link}}" ng-repeat="s in user.services" target="_blank">
+          <i ng-class="s.name" class="sign icon"></i>
+        </a>
+      </h3>
+      <a ng-href="mailto:{{user.email}}">{{user.email}}</a>
+      <div class="description">{{user.about|truncate:300}}</div>
+      <div>
+        <span ng-show="user.age"><strong>{{user.age}}</strong> years old</span>
+        <span ng-show="user.gender"><strong>{{user.gender}}</strong></span>
+        <span ng-show="user.location">
+          from <strong>{{user.location}}</strong>
+        </span>
+      </div>
+
+      <div ng-if="user.$expanded">
+        <h4 class="ui green header">Profile</h3>
+        <p class="description">
+          {{user.profile.updated|date:"EEEE, MMMM d,y 'at' h:mm:ss a"}}
+        </p>
+
+        <i class="loading icon" ng-show="!user.$fetched"></i>
+        <div ng-if="user.$fetched"> <!-- class="ui segment">-->
+          <!--<div class="ui blue ribbon label">Interests</div>-->
+          <p class="ui green many labels">
+            <a ng-href="{{t.resource}}" ng-repeat="t in user.profile.topics|filter:{kind:'interest'}|orderBy:'weight':true"
+               class="ui label">
+              <i class="tags icon"></i> {{t.label}}
+              <span class="detail">{{t.weight}}</span>
+            </a>
+          </p>
+
+          <p class="ui blue many labels">
+            <a ng-href="{{t.resource}}" ng-repeat="t in user.profile.topics|filter:{kind:'topic'}|orderBy:'weight':true"
+               class="ui label">
+              <i class="tag icon"></i> {{t.label}}
+              <span class="detail">{{t.weight}}</span>
+            </a>
+          </p>
+        </div>
+
+        <h4 class="ui green header">Charts</h3>
+        <i class="loading icon" ng-show="!user.charts.$fetched"></i>
+        <div bo-chart="ColumnChart" chart-data="user.charts[0]"
+             ng-if="user.charts.$fetched"></div>
+        <div bo-chart="PieChart" chart-data="user.charts[1]"
+             ng-if="user.charts.$fetched"></div>
+
+      </div>
+    </div>
+  </div>
+</div>
