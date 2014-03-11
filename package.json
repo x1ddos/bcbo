@@ -1,0 +1,16 @@
+{
+  "name": "bcbo",
+  "description": "Beancounter Backoffice written in Go + AngularJS",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/crhym3/bcbo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/crhym3/bcbo/issues"
+  },
+  "homepage": "https://beancounter.xpeppers.com",
+  "devDependencies": {
+    "grunt": "~0.4.3"
+  }
+}
